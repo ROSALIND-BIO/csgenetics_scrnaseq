@@ -74,11 +74,11 @@ class FilterCountMatrix:
                 )
 
         # Write out the raw count matrix
-        self.anndata_obj.write(f"{self.sample_name}.{sys.argv[1]}.raw_feature_bc_matrix.h5ad", compression="gzip", compression_opts=9)
+        self.anndata_obj.write(f"{self.sample_name}.raw_feature_bc_matrix.h5ad", compression="gzip", compression_opts=9)
 
         # Filter down to single cells and write out
         self.anndata_obj_filtered = self.anndata_obj[self.anndata_obj.obs['is_single_cell'] == True]
-        self.anndata_obj_filtered.write(f"{self.sample_name}.{sys.argv[1]}.filtered_feature_bc_matrix.h5ad", compression="gzip", compression_opts=9)
+        self.anndata_obj_filtered.write(f"{self.sample_name}.filtered_feature_bc_matrix.h5ad", compression="gzip", compression_opts=9)
 
         # Write out the barcodes, features, matrix files
         self.write_out_tripartite_filtered_matrix_files()
